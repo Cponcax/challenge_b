@@ -1,0 +1,33 @@
+initial_state = [3,4,3,1,2]
+
+initial_state = [1,1,1,1,2,1,1,4,1,4,3,1,1,1,1,1,1,1,1,4,1,3,1,1,1,5,1,3,1,4,1,2,1,1,5,1,1,1,1,1,1,1,1,1,1,3,4,1,5,1,1,1,1,1,1,1,1,
+                1,3,1,4,1,1,1,1,3,5,1,1,2,1,1,1,1,4,4,1,1,1,4,1,1,4,2,4,4,5,1,1,1,1,2,3,1,1,4,1,5,1,1,1,3,1,1,1,1,5,5,1,2,2,2,2,1,
+                1,2,1,1,1,1,1,3,1,1,1,2,3,1,5,1,1,1,2,2,1,1,1,1,1,3,2,1,1,1,4,3,1,1,4,1,5,4,1,4,1,1,1,1,1,1,1,1,1,1,2,2,4,5,1,1,1,1,
+                5,4,1,3,1,1,1,1,4,3,3,3,1,2,3,1,1,1,1,1,1,1,1,2,1,1,1,5,1,3,1,4,3,1,3,1,5,1,1,1,1,3,1,5,1,2,4,1,1,4,1,4,4,2,1,2,1,3,
+                3,1,4,4,1,1,3,4,1,1,1,2,5,2,5,1,1,1,4,1,1,1,1,1,1,3,1,5,1,2,1,1,1,1,1,4,4,1,1,1,5,1,1,5,1,2,1,5,1,1,1,1,1,1,1,1,1,1,
+                1,1,3,2,4,1,1,2,1,1,3,2]
+
+def alien_growth(initial_state)
+  days = 80
+  array_aliens = initial_state.clone
+  new_aliens = []
+
+  (1..days).map do |day|
+    array_aliens.each_with_index do |counter, index|
+      if counter > 0
+        array_aliens[index] -= 1
+      elsif counter == 0
+        array_aliens[index] = 6
+        array_aliens.push(9) 
+      end
+      new_aliens << 8 if counter == 9
+    end
+    p "Luego de #{day}: #{array_aliens}"
+  end
+  p "En el día #{days} tenemos un total de #{new_aliens.length} aliens"
+end
+
+print "Valor inici: " 
+print initial_state
+p ''
+alien_growth(initial_state)
